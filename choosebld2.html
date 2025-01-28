@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>पोषणReady</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            background-color: #f9f9f9;
+        }
+        header {
+            background-color: #f39c12;
+            padding: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        header img {
+            height: 50px;
+            margin-right: 10px;
+        }
+        header h1 {
+            margin: 0;
+            color: #fff;
+        }
+        .container {
+            padding: 20px;
+        }
+        .meal-option {
+            border: 1px solid #ddd;
+            padding: 15px;
+            margin: 10px auto;
+            border-radius: 8px;
+            max-width: 300px;
+            cursor: pointer;
+            background-color: #fff;
+        }
+        .meal-option img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+        .meal-option:hover {
+            background-color: #f1f1f1;
+        }
+        .meal-option.active {
+            background-color: #d1f7c4;
+            border-color: #27ae60;
+        }
+        .btn-container {
+            margin-top: 20px;
+        }
+        .btn {
+            padding: 10px 20px;
+            margin: 5px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .btn-back {
+            background-color: #95a5a6;
+            color: white;
+        }
+        .btn-back:hover {
+            background-color: #7f8c8d;
+        }
+        .btn-pay {
+            background-color: #27ae60;
+            color: white;
+        }
+        .btn-pay:hover {
+            background-color: #219150;
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="https://i.imgur.com/FaFasMN.png" alt="App Logo">
+        <h1>पोषणReady</h1>
+    </header>
+    <div class="container">
+        <div id="room-input">
+            <label for="roomNo">Enter Room No.:</label><br>
+            <input type="text" id="roomNo" name="roomNo" placeholder="Room No." required><br><br>
+            <button class="btn btn-pay" onclick="submitRoom()">Submit</button>
+        </div>
+
+        <div id="meal-options" class="hidden">
+            <h2>Select a Meal</h2>
+            <div class="meal-option" onclick="selectMeal(this, 'Breakfast')">
+                <img src="https://static.vecteezy.com/system/resources/previews/050/450/082/non_2x/idli-medu-vada-south-indian-sambhar-chutney-south-indian-breakfast-vector.jpg" alt="Breakfast">
+                <h3>Breakfast</h3>
+                <p>7:00 AM - 7:30 AM</p>
+                <p>Cost: ₹40 + ₹5 Handling Charge</p>
+            </div>
+            <div class="meal-option" onclick="selectMeal(this, 'Lunch')">
+                <img src="https://img.freepik.com/premium-vector/plate-food-with-picture-meal-bowl-food_1120554-4678.jpg?semt=ais_hybrid" alt="Lunch">
+                <h3>Lunch</h3>
+                <p>12:00 PM - 12:30 PM</p>
+                <p>Cost: ₹80 + ₹5 Handling Charge</p>
+            </div>
+            <div class="meal-option" onclick="selectMeal(this, 'Dinner')">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ5hpQ2237-8kc4HHB1kLPFBeETd1ajtmyb4g&s" alt="Dinner">
+                <h3>Dinner</h3>
+                <p>6:00 PM - 6:30 PM</p>
+                <p>Cost: ₹80 + ₹5 Handling Charge</p>
+            </div>
+
+            <div class="btn-container">
+                <button class="btn btn-back" onclick="goBack()">Back</button>
+                <button class="btn btn-pay" onclick="proceedToPay()">Pay at Next Step</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let selectedMeal = null;
+
+        function submitRoom() {
+            const roomNo = document.getElementById('roomNo').value;
+            if (roomNo.trim() === '') {
+                alert('Please enter your room number.');
+                return;
+            }
+            document.getElementById('room-input').classList.add('hidden');
+            document.getElementById('meal-options').classList.remove('hidden');
+        }
+
+        function selectMeal(element, meal) {
+            const options = document.querySelectorAll('.meal-option');
+            options.forEach(option => option.classList.remove('active'));
+            element.classList.add('active');
+            selectedMeal = meal;
+            alert(You selected: ${meal});
+        }
+
+        function goBack() {
+            document.getElementById('meal-options').classList.add('hidden');
+            document.getElementById('room-input').classList.remove('hidden');
+        }
+
+        function proceedToPay() {
+            if (!selectedMeal) {
+                alert('Please select a meal before proceeding.');
+                return;
+            }
+            alert(Proceeding to payment for ${selectedMeal}.);
+            // Add logic to proceed to payment
+            location.href = 'payment2.html';
+        }
+    </script>
+</body>
+</html>

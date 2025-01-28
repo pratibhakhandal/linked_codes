@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>पोषणReady</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+        }
+
+        header {
+            background-color: #ff7043; /* Orange color */
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        header img {
+            width: 50px; /* Adjust the size of the logo */
+            margin-right: 15px;
+        }
+
+        .container {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .payment-options {
+            margin-top: 20px;
+        }
+
+        .payment-input {
+            display: none;
+            margin-top: 20px;
+        }
+
+        .confirmation-message {
+            display: none;
+            margin-top: 20px;
+            font-size: 20px;
+            color: black; /* Changed to black */
+        }
+
+        .redirecting-message {
+            display: none;
+            margin-top: 20px;
+            font-size: 18px;
+            color: orange;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #ff7043; /* Orange color */
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #e64a19; /* Darker orange for hover */
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <img src="https://i.imgur.com/KSs4Y7j.png" alt="पोषणReady Logo">
+        <h1>पोषणReady</h1>
+    </header>
+
+    <div class="container">
+        <h2>Select Payment Method</h2>
+        
+        <!-- Payment Method Buttons -->
+        <div class="payment-options">
+            <button onclick="selectPaymentMethod('COD')">Cash On Delivery</button>
+            <button onclick="selectPaymentMethod('UPI')">UPI Payment</button>
+        </div>
+
+        <!-- UPI Input -->
+        <div class="payment-input" id="upi-input">
+            <h3>Enter your UPI ID:</h3>
+            <input type="text" id="upi-id" placeholder="Enter UPI ID">
+            <button onclick="verifyUPI()">Verify UPI ID</button>
+        </div>
+
+        <!-- Redirecting Message -->
+        <div id="redirecting-message" class="redirecting-message">
+            <h3>Redirecting to payment gateway...</h3>
+        </div>
+
+        <!-- Confirmation Message -->
+        <div id="confirmation-message" class="confirmation-message">
+            <h2>Your order has been confirmed! 🎉</h2>
+        </div>
+    </div>
+
+    <script>
+        let paymentMethod = "";
+
+        // Function to select payment method
+        function selectPaymentMethod(method) {
+            paymentMethod = method;
+            if (paymentMethod === "UPI") {
+                document.getElementById("upi-input").style.display = 'block';
+            } else {
+                // Simulate order confirmation directly for COD
+                proceedToConfirmation();
+            }
+        }
+
+        // Function to verify UPI ID
+        function verifyUPI() {
+            let upiId = document.getElementById("upi-id").value;
+            if (upiId) {
+                // Hide UPI input and show redirecting message
+                document.getElementById("upi-input").style.display = 'none';
+                document.getElementById("redirecting-message").style.display = 'block';
+
+                // Simulate redirect after a short delay
+                setTimeout(function() {
+                    // Hide redirecting message and show confirmation
+                    document.getElementById("redirecting-message").style.display = 'none';
+                    proceedToConfirmation();
+                }, 2000); // Simulate 2 seconds for redirection
+            } else {
+                alert("Please enter a valid UPI ID.");
+            }
+        }
+
+        // Function to proceed to confirmation message
+        function proceedToConfirmation() {
+            document.getElementById("confirmation-message").style.display = 'block';
+            setTimeout(function() {
+        location.href = 'feedback2.html';
+    }, 3000); // 3000 ms = 3 seconds
+        }
+    </script>
+
+</body>
+</html>

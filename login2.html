@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+        .logo-container {
+            text-align: center;
+            margin-top: 30px;
+        }
+        .logo-container img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.5);
+        }
+        .container {
+            max-width: 650px;
+            margin: 40px auto;
+            background-color: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+            padding: 30px;
+        }
+        h2 {
+            text-align: center;
+            color: #e67e22; /* Orange color */
+            font-size: 30px;
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+            font-size: 16px;
+        }
+        input[type="text"], input[type="number"] {
+            width: 100%;
+            padding: 14px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 16px;
+            box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        button {
+            width: 100%;
+            padding: 15px;
+            background-color: #e67e22; /* Orange color */
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+        button:hover {
+            background-color: #d35400; /* Darker orange */
+            transform: scale(1.03);
+        }
+        .otp-message {
+            color: green;
+            font-size: 16px;
+            text-align: center;
+            margin-top: 15px;
+        }
+        .role-selection {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+        .role-selection button {
+            flex: 1;
+            padding: 15px;
+            background-color: #e67e22; /* Orange color */
+            color: white;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+        .role-selection button:hover {
+            background-color: #d35400; /* Darker orange */
+            transform: scale(1.05);
+        }
+        .login-form {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="logo-container">
+        <img src="https://i.imgur.com/bUkZh2r.png" alt="Logo">
+    </div>
+
+    <div class="container">
+        <h2>Login</h2>
+        <div class="role-selection">
+            <button onclick="showLoginForm('patient')">Login as Patient</button>
+            <button onclick="showLoginForm('dietician')">Login as Dietician</button>
+            <button onclick="showLoginForm('delivery')">Login as Delivery Partner</button>
+            <button onclick="showLoginForm('administrator')">Login as Administrator</button>
+        </div>
+
+        <!-- Patient Login Form -->
+        <div class="login-form" id="patient-form">
+           <!-- <form onsubmit="return validateForm()"-->
+                <label for="patientId">Patient ID:</label>
+                <input type="text" id="patientId" name="patientId" placeholder="Enter your ID" required>
+
+                <label for="patientName">Patient Name:</label>
+                <input type="text" id="patientName" name="patientName" placeholder="Enter your name" required>
+
+                <label for="patientPhoneNumber">Phone Number:</label>
+                <input type="text" id="patientPhoneNumber" name="patientPhoneNumber" placeholder="Enter your registered phone number" required>
+
+                <button onclick="location.href='choosebld2.html'">Go to Admin Page</button>
+            </form>
+        </div>
+
+        <!-- Dietician Login Form -->
+        <div class="login-form" id="dietician-form">
+           <!-- <form onsubmit="return validateForm()"-->
+                <label for="dieticianName">Dietician Name:</label>
+                <input type="text" id="dieticianName" name="dieticianName" placeholder="Enter your name" required>
+
+                <label for="dieticianPhoneNumber">Phone Number:</label>
+                <input type="text" id="dieticianPhoneNumber" name="dieticianPhoneNumber" placeholder="Enter your registered phone number" required>
+
+                <button onclick="location.href='deitician2.html'">Go to Admin Page</button>
+            </form>
+        </div>
+
+        <!-- Delivery Partner Login Form -->
+        <div class="login-form" id="delivery-form">
+           <form onsubmit="return validateForm()"
+                <label for="deliveryName">Delivery Partner Name:</label>
+                <input type="text" id="deliveryName" name="deliveryName" placeholder="Enter your name" required>
+
+                <label for="deliveryPhoneNumber">Phone Number:</label>
+                <input type="text" id="deliveryPhoneNumber" name="deliveryPhoneNumber" placeholder="Enter your registered phone number" required>
+
+                <label for="deliveryId">Delivery Partner ID:</label>
+                <input type="text" id="deliveryId" name="deliveryId" placeholder="Enter your ID" required>
+
+                <button onclick="location.href='delivery2.html'">Go to Admin Page</button>
+            </form>
+        </div>
+
+        <!-- Administrator Login Form -->
+        <div class="login-form" id="administrator-form">
+            <!--<form onsubmit="return validateForm()">
+                <form action="admin2.html" method="get"-->
+                <label for="adminName">Administrator Name:</label>
+                <input type="text" id="adminName" name="adminName" placeholder="Enter your name" required>
+
+                <label for="adminPhoneNumber">Phone Number:</label>
+                <input type="text" id="adminPhoneNumber" name="adminPhoneNumber" placeholder="Enter your registered phone number" required>
+
+                <label for="adminId">Administrator ID:</label>
+                <input type="text" id="adminId" name="adminId" placeholder="Enter your ID" required>
+                <button onclick="location.href='admin2.html'">Go to Admin Page</button>
+                <!--<button type="submit">Submit</button-->
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function showLoginForm(role) {
+            // Hide all forms
+            document.getElementById('patient-form').style.display = 'none';
+            document.getElementById('dietician-form').style.display = 'none';
+            document.getElementById('delivery-form').style.display = 'none';
+            document.getElementById('administrator-form').style.display = 'none';
+            
+            // Show the selected form
+            if (role === 'patient') {
+                document.getElementById('patient-form').style.display = 'block';
+            } else if (role === 'dietician') {
+                document.getElementById('dietician-form').style.display = 'block';
+            } else if (role === 'delivery') {
+                document.getElementById('delivery-form').style.display = 'block';
+            } else if (role === 'administrator') {
+                document.getElementById('administrator-form').style.display = 'block';
+            }
+        }
+
+        function validateForm() {
+            // Basic form validation
+            return true;
+        }
+    </script>
+</body>
+</html>

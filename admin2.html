@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - पोषणReady</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #e67e22; /* Orange color */
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+            font-size: 24px;
+        }
+
+        .sub-header {
+            font-size: 20px;
+            margin-top: 10px;
+        }
+
+        .container {
+            padding: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background-color: #fff;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: center;
+            border: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #e67e22; /* Orange color */
+            color: #fff;
+        }
+
+        .summary, .delivery-details {
+            margin-top: 30px;
+        }
+
+        .summary {
+            background-color: #ecf0f1;
+            padding: 10px;
+            font-size: 18px;
+        }
+
+        .section-title {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .meal-options {
+            text-transform: capitalize;
+        }
+
+        .start-delivery-button {
+            background-color: #e67e22;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .start-delivery-button:hover {
+            background-color: #d35400;
+        }
+
+        .delivery-partner-input {
+            padding: 8px;
+            margin-top: 10px;
+            font-size: 16px;
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div>पोषणReady</div>
+        <div class="sub-header">Admin Dashboard</div>
+    </header>
+
+    <div class="container">
+        <!-- Meal Orders Table -->
+        <div class="meal-orders">
+            <div class="section-title">Meal Orders Table</div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Reg ID</th>
+                        <th>Chosen Meal</th>
+                        <th>Dietitian Permission</th>
+                        <th>Dietitian Comments</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>12345</td>
+                        <td class="meal-options">Lunch</td>
+                        <td>Yes</td>
+                        <td>Approved</td>
+                    </tr>
+                    <tr>
+                        <td>54321</td>
+                        <td class="meal-options">Breakfast</td>
+                        <td>Yes</td>
+                        <td>Approved</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Total Number of Orders -->
+        <div class="summary">
+            <div>Total Number of Orders with Dietitian Permission (Yes): <strong>2</strong></div>
+        </div>
+
+        <!-- Start Delivery Button -->
+        <div class="start-delivery">
+            <button class="start-delivery-button" onclick="startDelivery()">Start Delivery</button>
+        </div>
+
+        <!-- Delivery Details Table (Initially Hidden) -->
+        <div class="delivery-details hidden" id="delivery-details">
+            <div class="section-title">Delivery Details Table</div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Reg ID</th>
+                        <th>Room/Ward Number</th>
+                        <th>Meal Chosen</th>
+                        <th>Delivery Partner ID</th>
+                        <th>Delivered (Yes/No)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>12345</td>
+                        <td>Ward 1</td>
+                        <td class="meal-options">Lunch</td>
+                        <td><input type="text" class="delivery-partner-input" placeholder="Assign Partner ID"></td>
+                        <td><input type="checkbox"></td>
+                    </tr>
+                    <tr>
+                        <td>54321</td>
+                        <td>Ward 3</td>
+                        <td class="meal-options">Breakfast</td>
+                        <td><input type="text" class="delivery-partner-input" placeholder="Assign Partner ID"></td>
+                        <td><input type="checkbox"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        function startDelivery() {
+            // Show the delivery details table after the button is clicked
+            document.getElementById("delivery-details").classList.remove("hidden");
+        }
+    </script>
+
+</body>
+</html>
