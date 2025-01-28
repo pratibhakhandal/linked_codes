@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delivery Partner Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 0;
+        }
+        .header {
+            background-color: #FF8C00; /* Orange background */
+            padding: 20px 0;
+            text-align: center;
+            color: white;
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 36px;
+        }
+        .sub-header {
+            background-color: #FF8C00;
+            padding: 10px 0;
+            text-align: center;
+            color: white;
+            font-size: 24px;
+        }
+        .container {
+            width: 80%;
+            margin: 30px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        th, td {
+            padding: 12px;
+            border: 1px solid #ddd;
+            text-align: center;
+        }
+        th {
+            background-color: #FF8C00; /* Orange background for header */
+            color: white;
+        }
+        td input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+        }
+        button {
+            background-color: #FF8C00; /* Orange background */
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            width: 100%;
+            border-radius: 4px;
+        }
+        button:hover {
+            background-color: #e07b00;
+        }
+        .message {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 18px;
+            color: black; /* Black message text */
+        }
+        select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>पोषणReady</h1>
+    </div>
+    <div class="sub-header">
+        <p>Delivery Partner Dashboard</p>
+    </div>
+    <div class="container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Registration ID</th>
+                    <th>Meal Chosen</th>
+                    <th>Delivered</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>12345678</td>
+                    <td>
+                        <select id="meal1">
+                            <option value="breakfast">Breakfast</option>
+                            <option value="lunch">Lunch</option>
+                            <option value="dinner">Dinner</option>
+                        </select>
+                    </td>
+                    <td><input type="checkbox" id="delivered1"></td>
+                </tr>
+                <tr>
+                    <td>23456789</td>
+                    <td>
+                        <select id="meal2">
+                            <option value="breakfast">Breakfast</option>
+                            <option value="lunch">Lunch</option>
+                            <option value="dinner">Dinner</option>
+                        </select>
+                    </td>
+                    <td><input type="checkbox" id="delivered2"></td>
+                </tr>
+                <tr>
+                    <td>34567890</td>
+                    <td>
+                        <select id="meal3">
+                            <option value="breakfast">Breakfast</option>
+                            <option value="lunch">Lunch</option>
+                            <option value="dinner">Dinner</option>
+                        </select>
+                    </td>
+                    <td><input type="checkbox" id="delivered3"></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <button onclick="submitDeliveryTasks()">Submit</button>
+
+        <div id="message" class="message" style="display:none;">
+            Tasks for delivery are completed!
+        </div>
+    </div>
+
+    <script>
+        function submitDeliveryTasks() {
+            // Check if all checkboxes are ticked
+            let checkboxes = document.querySelectorAll('input[type="checkbox"]');
+            let allDelivered = true;
+
+            checkboxes.forEach(function(checkbox) {
+                if (!checkbox.checked) {
+                    allDelivered = false;
+                }
+            });
+
+            // If all tasks are delivered, show the message
+            if (allDelivered) {
+                document.getElementById('message').style.display = 'block';
+            } else {
+                alert('Please mark all tasks as delivered before submitting.');
+            }
+        }
+    </script>
+</body>
+</html>
